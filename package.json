@@ -1,0 +1,41 @@
+{
+  "name": "BaseBack",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "repository": "git@github.com:O-clock-Dev/BaseBack.git",
+  "author": "Alexandre Bourdeaud'hui <alexandre@oclock.io>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/server.js --exec babel-node",
+    "build": "babel src -d dist",
+    "test": "test(){ if [ -z $1 ]; then NODE_ENV=test mocha --exit tests/.setup.js 'tests/**/*.test.js'; else NODE_ENV=test mocha --exit tests/.setup.js $1 $2; fi; }; test",
+    "lint": "eslint --fix '{src,tests}/**/*.js'",
+    "pretty": "prettier --write '{src,tests}/**/*.js'",
+    "precommit": "lint-staged && yarn test"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn pretty",
+      "yarn lint",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "config": "^1.30.0",
+    "cors": "^2.8.4",
+    "debug-oclock": "^1.0.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.3",
+    "helmet": "^3.12.0",
+    "http-status": "^1.0.1",
+    "i18n": "^0.8.3",
+    "mongoose": "^5.0.9",
+    "morgan": "^1.9.0",
+    "serve-static": "^1.13.2"
+  },
+  "devDependencies": {
+    "config-oclock": "git+ssh://git@github.com:O-clock-Dev/config-oclock#1.0.22",
+    "config-oclock-back": "^1.*"
+  }
+}

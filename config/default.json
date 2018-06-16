@@ -1,0 +1,11 @@
+{
+  "Database": {
+    "options": {
+      "autoReconnect": true,
+      "keepAlive": true,
+      "reconnectTries": 30,
+      "reconnectInterval": 5000,
+      "socketTimeoutMS": 0
+    }
+  }
+}
